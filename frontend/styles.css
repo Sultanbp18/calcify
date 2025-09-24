@@ -77,12 +77,13 @@ nav {
 /* Sub-navigation */
 .sub-nav {
     background-color: #ecf0f1;
-    padding: 0;
-    margin-bottom: 0;
-    width: 200px;
-    flex-shrink: 0;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    height: 60px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    overflow-x: auto;
 }
 
 body.dark-mode .sub-nav {
@@ -90,18 +91,17 @@ body.dark-mode .sub-nav {
 }
 
 .sub-nav .sub-tab-button {
-    width: 100%;
-    text-align: left;
-    border-radius: 0;
-    margin: 0;
+    width: auto;
+    flex-shrink: 0;
+    min-width: 120px;
+    text-align: center;
+    border-radius: 4px;
+    margin: 0 0.25rem;
+    padding: 0.5rem;
+    font-size: 0.8rem;
 }
 
 /* Mechanical tests layout */
-#mechanical {
-    display: flex;
-    gap: 2rem;
-}
-
 #mechanical h2 {
     margin-bottom: 1rem;
 }
