@@ -1,0 +1,233 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    color: #e0e0e0;
+    background-color: #1a1a1a;
+}
+
+/* Header */
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-size: 1.5rem;
+}
+
+#dark-mode-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+#dark-mode-toggle:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+/* Navigation */
+nav {
+    background-color: #34495e;
+    padding: 0;
+}
+
+.tab-button, .sub-tab-button {
+    background: none;
+    border: none;
+    color: #bdc3c7;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1rem;
+}
+
+.tab-button.active, .sub-tab-button.active {
+    background-color: #3498db;
+    color: white;
+}
+
+.tab-button:hover, .sub-tab-button:hover {
+    background-color: #2980b9;
+    color: white;
+}
+
+/* Sub-navigation */
+.sub-nav {
+    background-color: #ecf0f1;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
+body.dark-mode .sub-nav {
+    background-color: #2c3e50;
+}
+
+/* Main content */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.tab-content, .sub-tab-content {
+    display: none;
+}
+
+.tab-content.active, .sub-tab-content.active {
+    display: block;
+}
+
+/* Forms */
+form {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+body.dark-mode form {
+    background-color: #2c3e50;
+    color: #e0e0e0;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.form-row label {
+    width: 200px;
+    font-weight: 600;
+    margin-right: 1rem;
+}
+
+.form-row input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+body.dark-mode .form-row input {
+    background-color: #34495e;
+    border-color: #555;
+    color: #e0e0e0;
+}
+
+button[type="submit"] {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #229954;
+}
+
+/* Results */
+.results {
+    background-color: #ecf0f1;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+body.dark-mode .results {
+    background-color: #34495e;
+}
+
+.results h3, .results h4 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+body.dark-mode .results h3, body.dark-mode .results h4 {
+    color: #e0e0e0;
+}
+
+.results p {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.export-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+
+.export-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Footer */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+footer p {
+    font-size: 0.9rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-row label {
+        width: auto;
+        margin-bottom: 0.5rem;
+    }
+
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header h1 {
+        margin-bottom: 1rem;
+    }
+}

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcify - Radiotherapy Calculation Tools</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Calcify - Radiotherapy Calculation Tools</h1>
+        <button id="dark-mode-toggle">🌙 Dark Mode</button>
+    </header>
+
+    <nav>
+        <button class="tab-button active" data-tab="dosimetry">Dosimetry</button>
+        <button class="tab-button" data-tab="mechanical">Mechanical Tests</button>
+    </nav>
+
+    <main>
+        <!-- Dosimetry Tab -->
+        <div id="dosimetry" class="tab-content active">
+            <h2>Dosimetry Calculation (TRS-398)</h2>
+            <form id="dosimetry-form">
+                <div class="form-row">
+                    <label for="temperature">Temperature (°C):</label>
+                    <input type="number" id="temperature" value="22.5" step="0.1" required>
+                </div>
+                <div class="form-row">
+                    <label for="pressure">Pressure (mmHg):</label>
+                    <input type="number" id="pressure" value="757.562" step="0.001" required>
+                </div>
+                <div class="form-row">
+                    <label for="chamber">Chamber:</label>
+                    <input type="text" id="chamber" value="30011" required>
+                </div>
+                <div class="form-row">
+                    <label for="k_elec">K_ELEC:</label>
+                    <input type="number" id="k_elec" value="1.000" step="0.001" required>
+                </div>
+                <div class="form-row">
+                    <label for="nd_w">ND_w (Gy/nC):</label>
+                    <input type="number" id="nd_w" value="0.04745" step="0.00001" required>
+                </div>
+                <div class="form-row">
+                    <label for="mu">MU:</label>
+                    <input type="number" id="mu" value="100" required>
+                </div>
+                <div class="form-row">
+                    <label for="clinical_pdd">Clinical PDD (%):</label>
+                    <input type="number" id="clinical_pdd" value="73.5" step="0.1" required>
+                </div>
+                <div class="form-row">
+                    <label for="v1">V1 (V):</label>
+                    <input type="number" id="v1" value="400" required>
+                </div>
+                <div class="form-row">
+                    <label for="v2">V2 (V):</label>
+                    <input type="number" id="v2" value="100" required>
+                </div>
+                <div class="form-row">
+                    <label for="m1">M1:</label>
+                    <input type="number" id="m1" value="15.3933" step="0.0001" required>
+                </div>
+                <div class="form-row">
+                    <label for="mmin">Mmin:</label>
+                    <input type="number" id="mmin" value="15.4167" step="0.0001" required>
+                </div>
+                <div class="form-row">
+                    <label for="m2">M2:</label>
+                    <input type="number" id="m2" value="15.2333" step="0.0001" required>
+                </div>
+                <div class="form-row">
+                    <label for="tpr">TPR:</label>
+                    <input type="number" id="tpr" value="0.74" step="0.01" required>
+                </div>
+                <button type="submit">Calculate</button>
+            </form>
+            <div id="dosimetry-results" class="results" style="display: none;">
+                <h3>Results</h3>
+                <p>Dosis Absolute: <span id="dosis-absolute"></span> cGy/MU</p>
+                <p>Deviasi: <span id="deviasi"></span> %</p>
+                <button id="export-dosimetry" class="export-btn">📥 Export</button>
+            </div>
+        </div>
+
+        <!-- Mechanical Tests Tab -->
+        <div id="mechanical" class="tab-content">
+            <h2>Mechanical Tests</h2>
+            <nav class="sub-nav">
+                <button class="sub-tab-button active" data-sub-tab="field-size">Field Size</button>
+                <button class="sub-tab-button" data-sub-tab="table-position">Table Position</button>
+                <button class="sub-tab-button" data-sub-tab="odi">ODI</button>
+                <button class="sub-tab-button" data-sub-tab="gantry-angle">Gantry Angle</button>
+                <button class="sub-tab-button" data-sub-tab="collimator-angle">Collimator Angle</button>
+            </nav>
+
+            <!-- Field Size Sub-tab -->
+            <div id="field-size" class="sub-tab-content active">
+                <h3>Field Size Indicator (10x10)</h3>
+                <form id="field-size-form">
+                    <div class="form-row">
+                        <label for="x">X (cm):</label>
+                        <input type="number" id="x" value="10" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="y">Y (cm):</label>
+                        <input type="number" id="y" value="10" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="x1">X1 (cm):</label>
+                        <input type="number" id="x1" step="0.01" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="x2">X2 (cm):</label>
+                        <input type="number" id="x2" step="0.01" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="y1">Y1 (cm):</label>
+                        <input type="number" id="y1" step="0.01" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="y2">Y2 (cm):</label>
+                        <input type="number" id="y2" step="0.01" required>
+                    </div>
+                    <button type="submit">Calculate</button>
+                </form>
+                <div id="field-size-results" class="results" style="display: none;">
+                    <h4>Results</h4>
+                    <p>ΔX: <span id="delta-x"></span> mm</p>
+                    <p>ΔY: <span id="delta-y"></span> mm</p>
+                    <p>Status: <span id="field-size-status"></span></p>
+                    <button id="export-field-size" class="export-btn">📥 Export</button>
+                </div>
+            </div>
+
+            <!-- Table Position Sub-tab -->
+            <div id="table-position" class="sub-tab-content">
+                <h3>Table Position Indicator</h3>
+                <form id="table-position-form">
+                    <div class="form-row">
+                        <label for="set-shift">Set Shift (cm):</label>
+                        <input type="number" id="set-shift" step="0.01" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="measured-shift">Measured Shift (cm):</label>
+                        <input type="number" id="measured-shift" step="0.01" required>
+                    </div>
+                    <button type="submit">Calculate</button>
+                </form>
+                <div id="table-position-results" class="results" style="display: none;">
+                    <h4>Results</h4>
+                    <p>ΔS: <span id="delta-s-table"></span> mm</p>
+                    <p>Status: <span id="table-position-status"></span></p>
+                    <button id="export-table-position" class="export-btn">📥 Export</button>
+                </div>
+            </div>
+
+            <!-- ODI Sub-tab -->
+            <div id="odi" class="sub-tab-content">
+                <h3>ODI Test</h3>
+                <form id="odi-form">
+                    <div class="form-row">
+                        <label for="set-distance">Set Distance (cm):</label>
+                        <input type="number" id="set-distance" step="0.01" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="measured-distance">Measured Distance (cm):</label>
+                        <input type="number" id="measured-distance" step="0.01" required>
+                    </div>
+                    <button type="submit">Calculate</button>
+                </form>
+                <div id="odi-results" class="results" style="display: none;">
+                    <h4>Results</h4>
+                    <p>ΔD: <span id="delta-d"></span> mm</p>
+                    <p>Status: <span id="odi-status"></span></p>
+                    <button id="export-odi" class="export-btn">📥 Export</button>
+                </div>
+            </div>
+
+            <!-- Gantry Angle Sub-tab -->
+            <div id="gantry-angle" class="sub-tab-content">
+                <h3>Gantry Angle Indicator</h3>
+                <form id="gantry-angle-form">
+                    <div class="form-row">
+                        <label for="set-angle-gantry">Set Angle (°):</label>
+                        <input type="number" id="set-angle-gantry" step="0.01" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="measured-angle-gantry">Measured Angle (°):</label>
+                        <input type="number" id="measured-angle-gantry" step="0.01" required>
+                    </div>
+                    <button type="submit">Calculate</button>
+                </form>
+                <div id="gantry-angle-results" class="results" style="display: none;">
+                    <h4>Results</h4>
+                    <p>ΔS: <span id="delta-s-gantry"></span> °</p>
+                    <p>Status: <span id="gantry-angle-status"></span></p>
+                    <button id="export-gantry-angle" class="export-btn">📥 Export</button>
+                </div>
+            </div>
+
+            <!-- Collimator Angle Sub-tab -->
+            <div id="collimator-angle" class="sub-tab-content">
+                <h3>Collimator Angle Indicator</h3>
+                <form id="collimator-angle-form">
+                    <div class="form-row">
+                        <label for="set-angle-collimator">Set Angle (°):</label>
+                        <input type="number" id="set-angle-collimator" step="0.01" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="measured-angle-collimator">Measured Angle (°):</label>
+                        <input type="number" id="measured-angle-collimator" step="0.01" required>
+                    </div>
+                    <button type="submit">Calculate</button>
+                </form>
+                <div id="collimator-angle-results" class="results" style="display: none;">
+                    <h4>Results</h4>
+                    <p>ΔS: <span id="delta-s-collimator"></span> °</p>
+                    <p>Status: <span id="collimator-angle-status"></span></p>
+                    <button id="export-collimator-angle" class="export-btn">📥 Export</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Disclaimer: This tool is for educational and research purposes only. Always consult with qualified medical professionals for clinical decisions.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
