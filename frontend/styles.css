@@ -147,7 +147,7 @@ body.dark-mode form {
     margin-right: 1rem;
 }
 
-.form-row input {
+.form-row input, .form-row select {
     flex: 1;
     padding: 0.5rem;
     border: 1px solid #ddd;
@@ -155,7 +155,7 @@ body.dark-mode form {
     font-size: 1rem;
 }
 
-body.dark-mode .form-row input {
+body.dark-mode .form-row input, body.dark-mode .form-row select {
     background-color: #34495e;
     border-color: #555;
     color: #e0e0e0;
