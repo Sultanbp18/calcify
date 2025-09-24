@@ -45,8 +45,12 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('darkMode', isDark);
     });
 
-    // Load dark mode preference
-    const savedDarkMode = localStorage.getItem('darkMode');
+    // Load dark mode preference (default to dark)
+    let savedDarkMode = localStorage.getItem('darkMode');
+    if (savedDarkMode === null) {
+        savedDarkMode = 'true';
+        localStorage.setItem('darkMode', 'true');
+    }
     if (savedDarkMode === 'true') {
         document.body.classList.add('dark-mode');
         darkModeToggle.textContent = '☀️ Light Mode';
