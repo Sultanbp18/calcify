@@ -78,7 +78,7 @@ function setupFormHandlers() {
         };
 
         try {
-            const response = await fetch('http://localhost:5000/api/dosimetry', {
+            const response = await fetch('/api/dosimetry', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -110,7 +110,7 @@ function setupFormHandlers() {
         };
 
         try {
-            const response = await fetch('http://localhost:5000/api/field_size', {
+            const response = await fetch('/api/field_size', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -138,7 +138,7 @@ function setupFormHandlers() {
         };
 
         try {
-            const response = await fetch('http://localhost:5000/api/table_position', {
+            const response = await fetch('/api/table_position', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -166,7 +166,7 @@ function setupFormHandlers() {
         };
 
         try {
-            const response = await fetch('http://localhost:5000/api/odi', {
+            const response = await fetch('/api/odi', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -194,7 +194,7 @@ function setupFormHandlers() {
         };
 
         try {
-            const response = await fetch('http://localhost:5000/api/gantry_angle', {
+            const response = await fetch('/api/gantry_angle', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -222,7 +222,7 @@ function setupFormHandlers() {
         };
 
         try {
-            const response = await fetch('http://localhost:5000/api/collimator_angle', {
+            const response = await fetch('/api/collimator_angle', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

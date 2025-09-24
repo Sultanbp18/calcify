@@ -3,8 +3,12 @@ from flask_cors import CORS
 from pylinac.calibration import trs398
 import math
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 CORS(app)
+
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
 
 @app.route('/api/dosimetry', methods=['POST'])
 def calculate_dosimetry():
