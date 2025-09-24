@@ -203,20 +203,22 @@ footer {
     color: white;
     text-align: center;
     padding: 1rem;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
+    margin-top: auto;
 }
 
 body.dark-mode footer {
     background-color: #1a1a1a;
 }
 
-/* Add padding to body to prevent content overlap */
+/* Make body flex to push footer down */
 body {
-    padding-bottom: 4rem; /* Adjust based on footer height */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
 }
 
 footer p {
