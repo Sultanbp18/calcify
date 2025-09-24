@@ -11,7 +11,7 @@ A web-based application for radiotherapy quality assurance calculations, impleme
 
 ### Mechanical Tests Tab
 - **Field Size**: Field size indicator test (10x10 cm)
-- **Table Position**: Table position indicator test
+- **Couch Position**: Couch position indicator test
 - **ODI**: Optical Distance Indicator test
 - **Gantry Angle**: Gantry angle indicator test
 - **Collimator Angle**: Collimator angle indicator test
@@ -72,7 +72,7 @@ calcify/
 
 - `POST /api/dosimetry` - TRS-398 dose calculation
 - `POST /api/field_size` - Field size test
-- `POST /api/table_position` - Table position test
+- `POST /api/couch_position` - Couch position test
 - `POST /api/odi` - ODI test
 - `POST /api/gantry_angle` - Gantry angle test
 - `POST /api/collimator_angle` - Collimator angle test

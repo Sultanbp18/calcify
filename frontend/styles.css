@@ -247,7 +247,46 @@ footer p {
 }
 
 /* Responsive design */
+@media (max-width: 1024px) {
+    main {
+        padding: 1rem;
+    }
+
+    .tab-button, .sub-tab-button {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+}
+
 @media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    header {
+        padding: 0.75rem;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header h1 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    #dark-mode-toggle {
+        padding: 0.4rem;
+        font-size: 1rem;
+    }
+
+    nav {
+        padding: 0.5rem;
+    }
+
+    main {
+        padding: 1rem 0.5rem;
+    }
+
     .form-row {
         flex-direction: column;
         align-items: flex-start;
@@ -256,14 +295,68 @@ footer p {
     .form-row label {
         width: auto;
         margin-bottom: 0.5rem;
+        font-size: 0.9rem;
     }
 
-    header {
+    .form-row input {
+        width: 100%;
+        font-size: 0.9rem;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+        padding: 0.6rem;
+    }
+
+    .results {
+        padding: 1rem;
+    }
+
+    /* Mechanical tests responsive */
+    #mechanical {
         flex-direction: column;
-        text-align: center;
+        gap: 1rem;
     }
 
-    header h1 {
+    .sub-nav {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
         margin-bottom: 1rem;
+    }
+
+    .sub-nav .sub-tab-button {
+        flex-shrink: 0;
+        width: auto;
+        min-width: 120px;
+    }
+
+    footer {
+        padding: 0.75rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1rem;
+    }
+
+    .tab-button, .sub-tab-button {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    form {
+        padding: 1rem;
+    }
+
+    .results h3, .results h4 {
+        font-size: 1rem;
+    }
+
+    .export-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
     }
 }
