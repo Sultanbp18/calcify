@@ -133,8 +133,8 @@ function setupFormHandlers() {
         }
     });
 
-    // Table position form
-    document.getElementById('table-position-form').addEventListener('submit', async (e) => {
+    // Couch position form
+    document.getElementById('couch-position-form').addEventListener('submit', async (e) => {
         e.preventDefault();
         const formData = {
             set_shift: parseFloat(document.getElementById('set-shift').value),
@@ -142,7 +142,7 @@ function setupFormHandlers() {
         };
 
         try {
-            const response = await fetch('/api/table_position', {
+            const response = await fetch('/api/couch_position', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -155,7 +155,7 @@ function setupFormHandlers() {
             }
 
             const result = await response.json();
-            displayTablePositionResults(result);
+            displayCouchPositionResults(result);
         } catch (error) {
             alert('Error: ' + error.message);
         }
@@ -263,10 +263,10 @@ function displayFieldSizeResults(result) {
     document.getElementById('field-size-results').style.display = 'block';
 }
 
-function displayTablePositionResults(result) {
-    document.getElementById('delta-s-table').textContent = result.delta_s;
-    document.getElementById('table-position-status').textContent = result.lulus ? 'LULUS' : 'TIDAK LULUS';
-    document.getElementById('table-position-results').style.display = 'block';
+function displayCouchPositionResults(result) {
+    document.getElementById('delta-s-couch').textContent = result.delta_s;
+    document.getElementById('couch-position-status').textContent = result.lulus ? 'LULUS' : 'TIDAK LULUS';
+    document.getElementById('couch-position-results').style.display = 'block';
 }
 
 function displayODIResults(result) {
@@ -310,14 +310,14 @@ function setupExportHandlers() {
         downloadJSON(data, 'field-size-results.json');
     });
 
-    document.getElementById('export-table-position').addEventListener('click', () => {
+    document.getElementById('export-couch-position').addEventListener('click', () => {
         const data = {
-            type: 'table_position',
-            delta_s: document.getElementById('delta-s-table').textContent,
-            status: document.getElementById('table-position-status').textContent,
+            type: 'couch_position',
+            delta_s: document.getElementById('delta-s-couch').textContent,
+            status: document.getElementById('couch-position-status').textContent,
             timestamp: new Date().toISOString()
         };
-        downloadJSON(data, 'table-position-results.json');
+        downloadJSON(data, 'couch-position-results.json');
     });
 
     document.getElementById('export-odi').addEventListener('click', () => {

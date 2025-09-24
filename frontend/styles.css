@@ -203,7 +203,20 @@ footer {
     color: white;
     text-align: center;
     padding: 1rem;
-    margin-top: 2rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+body.dark-mode footer {
+    background-color: #1a1a1a;
+}
+
+/* Add padding to body to prevent content overlap */
+body {
+    padding-bottom: 4rem; /* Adjust based on footer height */
 }
 
 footer p {

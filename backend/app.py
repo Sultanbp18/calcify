@@ -83,8 +83,8 @@ def calculate_field_size():
     except Exception as e:
         return jsonify({'error': str(e)}), 400
 
-@app.route('/api/table_position', methods=['POST'])
-def calculate_table_position():
+@app.route('/api/couch_position', methods=['POST'])
+def calculate_couch_position():
     data = request.json
 
     try:
